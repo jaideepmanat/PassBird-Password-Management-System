@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 380px;
+            margin: 100px auto;
+            border-radius: 8px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .form-input {
+            box-sizing: border-box;
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #555;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: #9a1445;
+            outline: none;
+        }
+
+        .form-button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            border: none;
+            background-color: #9a1445;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-button:hover {
+            background-color: #7c0d36;
+        }
+
+        .form-button:focus {
+            outline: none;
+        }
+
+        .form-title {
+            text-align: center;
+            font-size: 32px;
+            color: #9a1445;
+            margin-bottom: 30px;
+        }
+
+        .form-links {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .form-links a {
+            color: #9a1445;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .form-links a:hover {
+            text-decoration: underline;
+        }
+        .error-border {
+            border-color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-title">FORGOT PASSWORD</div>
+        <form>
+            <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-input" type="email" id="email" name="email" placeholder="Enter your email">
+                <span class="error-message" id="error-email"></span>
+            </div>
+            <div class="form-group">
+                <button class="form-button" type="submit">Reset Password</button>
+            </div>
+        </form>
+        <div class="form-links">
+            <a href="login.html">Remembered your password? Log in</a>
+            <span>|</span>
+            <a href="create_acc.html">Create new account</a>
+        </div>
+    </div>
+    <script>
+        // For Login Page
+        document.getElementById("username").addEventListener("input", function () {
+            checkEmpty(this, "error-username", "Username cannot be empty.");
+        });
+    
+        document.getElementById("password").addEventListener("input", function () {
+            checkPasswordLength(this, "error-password", "Password must be at least 8 characters long.");
+        });
+    
+        // For Create Account Page
+        document.getElementById("fullname").addEventListener("input", function () {
+            checkEmpty(this, "error-fullname", "Full name cannot be empty.");
+        });
+    
+        document.getElementById("email").addEventListener("input", function () {
+            checkEmpty(this, "error-email", "Email cannot be empty.");
+        });
+    
+        document.getElementById("password").addEventListener("input", function () {
+            checkPasswordLength(this, "error-password", "Password must be at least 8 characters long.");
+        });
+    
+        document.getElementById("confirm-password").addEventListener("input", function () {
+            checkPasswordMatch(this, "error-confirm-password", "Passwords do not match.");
+        });
+    
+        // For Forgot Password Page
+        document.getElementById("email").addEventListener("input", function () {
+            checkEmpty(this, "error-email", "Email cannot be empty.");
+        });
+    
+        // Validation Functions
+        function checkEmpty(inputElement, errorElementId, errorMessage) {
+            var errorElement = document.getElementById(errorElementId);
+            if (inputElement.value.trim() === "") {
+                errorElement.textContent = errorMessage;
+                inputElement.classList.add("error-border");
+            } else {
+                errorElement.textContent = "";
+                inputElement.classList.remove("error-border");
+            }
+        }
+    
+        function checkPasswordLength(inputElement, errorElementId, errorMessage) {
+            var errorElement = document.getElementById(errorElementId);
+            if (inputElement.value.length > 0 && inputElement.value.length < 8) {
+                errorElement.textContent = errorMessage;
+                inputElement.classList.add("error-border");
+            } else {
+                errorElement.textContent = "";
+                inputElement.classList.remove("error-border");
+            }
+        }
+    
+        function checkPasswordMatch(confirmPasswordElement, errorElementId, errorMessage) {
+            var errorElement = document.getElementById(errorElementId);
+            var passwordElement = document.getElementById("password");
+            if (confirmPasswordElement.value !== passwordElement.value) {
+                errorElement.textContent = errorMessage;
+                confirmPasswordElement.classList.add("error-border");
+            } else {
+                errorElement.textContent = "";
+                confirmPasswordElement.classList.remove("error-border");
+            }
+        }
+    </script>
+    
+</body>
+</html>
