@@ -94,24 +94,19 @@
             text-decoration: underline;
         }
         .error-border {
-            border-color: red;
+             border-color: red;
         }
 
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="form-title">CREATE ACCOUNT</div>
+        <div class="form-title">LOGIN</div>
         <form>
             <div class="form-group">
-                <label class="form-label" for="fullname">Full Name</label>
-                <input class="form-input" type="text" id="fullname" name="fullname" placeholder="Enter your full name">
-                <span class="error-message" id="error-fullname"></span>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="email">Email</label>
-                <input class="form-input" type="email" id="email" name="email" placeholder="Enter your email">
-                <span class="error-message" id="error-email"></span>
+                <label class="form-label" for="username">User name</label>
+                <input class="form-input" type="text" id="username" name="username" placeholder="Enter your user name">
+                <span class="error-message" id="error-username"></span>
             </div>
             <div class="form-group">
                 <label class="form-label" for="password">Password</label>
@@ -119,16 +114,13 @@
                 <span class="error-message" id="error-password"></span>
             </div>
             <div class="form-group">
-                <label class="form-label" for="confirm-password">Confirm Password</label>
-                <input class="form-input" type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password">
-                <span class="error-message" id="error-confirm-password"></span>
-            </div>
-            <div class="form-group">
-                <button class="form-button" type="submit">Create Account</button>
+                <button class="form-button" type="submit">Log in</button>
             </div>
         </form>
         <div class="form-links">
-            <a href="login.html">Already have an account? Log in</a>
+            <a href="forget.html">Forgot password?</a>
+            <span>|</span>
+            <a href="create_acc.html">Create new account</a>
         </div>
     </div>
     <script>
@@ -198,6 +190,7 @@
             }
         }
     </script>
+    
     
 </body>
 </html>

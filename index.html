@@ -4,193 +4,158 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
             font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
         }
 
-        .container {
-            width: 90%;
-            max-width: 380px;
-            margin: 100px auto;
-            border-radius: 8px;
-            background-color: #fff;
+        .header {
+            background-color: #9a1445;
             padding: 20px;
-            box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s ease;
+            color: #fff;
+            text-align: center;
+            display: flex;
+            align-items: center;
         }
 
-        .container:hover {
-            transform: translateY(-5px);
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-right: 20px;
         }
 
-        .form-group {
-            margin-bottom: 20px;
+        .banner {
+            height: 100vh;
+            background-image: url("banner-image.jpg");
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            background-position: center top;
         }
 
-        .form-label {
-            display: block;
-            font-weight: bold;
+
+
+
+
+
+
+
+
+        .site-overview {
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.6;
             color: #555;
-            margin-bottom: 5px;
+            max-width: 800px;
+            margin: 30px auto;
         }
 
-        .form-input {
-            box-sizing: border-box;
+        .cta-button {
             display: block;
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 14px;
-            color: #555;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-input:focus {
-            border-color: #9a1445;
-            outline: none;
-        }
-
-        .form-button {
-            display: block;
-            width: 100%;
-            padding: 14px;
-            border: none;
+            width: 180px;
+            padding: 16px 24px;
+            margin: 0 auto;
             background-color: #9a1445;
             color: #fff;
+            text-align: center;
+            text-decoration: none;
             font-weight: bold;
             border-radius: 5px;
-            cursor: pointer;
             transition: background-color 0.3s ease;
         }
 
-        .form-button:hover {
+        .cta-button:hover {
             background-color: #7c0d36;
         }
 
-        .form-button:focus {
-            outline: none;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        .form-title {
-            text-align: center;
-            font-size: 32px;
+        .section-heading {
+            font-size: 28px;
             color: #9a1445;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .feature-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 30px;
         }
 
-        .form-links {
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            margin-right: 20px;
+        }
+
+        .feature-content {
+            max-width: 600px;
+        }
+
+        .feature-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .feature-description {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .footer {
+            background-color: #9a1445;
+            padding: 20px;
+            color: #fff;
             text-align: center;
-            margin-top: 10px;
         }
-
-        .form-links a {
-            color: #9a1445;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        .form-links a:hover {
-            text-decoration: underline;
-        }
-        .error-border {
-             border-color: red;
-        }
-
     </style>
 </head>
 <body>
+    <header class="header">
+        <img class="logo" src="logo_index.png" alt="Secure Oracle Logo">
+        <h1>Secure Oracle</h1>
+    </header>
+
+    <img class="banner" src="Banner-01.jpg" alt="Banner Image">
+
     <div class="container">
-        <div class="form-title">LOGIN</div>
-        <form>
-            <div class="form-group">
-                <label class="form-label" for="username">User name</label>
-                <input class="form-input" type="text" id="username" name="username" placeholder="Enter your user name">
-                <span class="error-message" id="error-username"></span>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="password">Password</label>
-                <input class="form-input" type="password" id="password" name="password" placeholder="Enter your password">
-                <span class="error-message" id="error-password"></span>
-            </div>
-            <div class="form-group">
-                <button class="form-button" type="submit">Log in</button>
-            </div>
-        </form>
-        <div class="form-links">
-            <a href="forget.html">Forgot password?</a>
-            <span>|</span>
-            <a href="create_acc.html">Create new account</a>
+        <div class="site-overview">
+            <p>Secure Oracle is your trusted password manager that ensures your passwords are securely stored and easily accessible whenever you need them. Never worry about forgetting passwords again!</p>
+            <a href="login.html" class="cta-button">Log In</a>
         </div>
+
+        <section>
+            <h2 class="section-heading">Features</h2>
+
+            <div class="feature-box">
+                <img class="feature-icon" src="feature_icon_1.png" alt="Feature Icon">
+                <div class="feature-content">
+                    <div class="feature-title">Secure Password Storage</div>
+                    <div class="feature-description">Securely store all your passwords in one place, protected by advanced encryption algorithms.</div>
+                </div>
+            </div>
+
+            <div class="feature-box">
+                <img class="feature-icon" src="feature_icon_2.png" alt="Feature Icon">
+                <div class="feature-content">
+                    <div class="feature-title">Easy Password Management</div>
+                    <div class="feature-description">Effortlessly manage and organize your passwords for different accounts and websites.</div>
+                </div>
+            </div>
+        </section>
     </div>
-    <script>
-        // For Login Page
-        document.getElementById("username").addEventListener("input", function () {
-            checkEmpty(this, "error-username", "Username cannot be empty.");
-        });
-    
-        document.getElementById("password").addEventListener("input", function () {
-            checkPasswordLength(this, "error-password", "Password must be at least 8 characters long.");
-        });
-    
-        // For Create Account Page
-        document.getElementById("fullname").addEventListener("input", function () {
-            checkEmpty(this, "error-fullname", "Full name cannot be empty.");
-        });
-    
-        document.getElementById("email").addEventListener("input", function () {
-            checkEmpty(this, "error-email", "Email cannot be empty.");
-        });
-    
-        document.getElementById("password").addEventListener("input", function () {
-            checkPasswordLength(this, "error-password", "Password must be at least 8 characters long.");
-        });
-    
-        document.getElementById("confirm-password").addEventListener("input", function () {
-            checkPasswordMatch(this, "error-confirm-password", "Passwords do not match.");
-        });
-    
-        // For Forgot Password Page
-        document.getElementById("email").addEventListener("input", function () {
-            checkEmpty(this, "error-email", "Email cannot be empty.");
-        });
-    
-        // Validation Functions
-        function checkEmpty(inputElement, errorElementId, errorMessage) {
-            var errorElement = document.getElementById(errorElementId);
-            if (inputElement.value.trim() === "") {
-                errorElement.textContent = errorMessage;
-                inputElement.classList.add("error-border");
-            } else {
-                errorElement.textContent = "";
-                inputElement.classList.remove("error-border");
-            }
-        }
-    
-        function checkPasswordLength(inputElement, errorElementId, errorMessage) {
-            var errorElement = document.getElementById(errorElementId);
-            if (inputElement.value.length > 0 && inputElement.value.length < 8) {
-                errorElement.textContent = errorMessage;
-                inputElement.classList.add("error-border");
-            } else {
-                errorElement.textContent = "";
-                inputElement.classList.remove("error-border");
-            }
-        }
-    
-        function checkPasswordMatch(confirmPasswordElement, errorElementId, errorMessage) {
-            var errorElement = document.getElementById(errorElementId);
-            var passwordElement = document.getElementById("password");
-            if (confirmPasswordElement.value !== passwordElement.value) {
-                errorElement.textContent = errorMessage;
-                confirmPasswordElement.classList.add("error-border");
-            } else {
-                errorElement.textContent = "";
-                confirmPasswordElement.classList.remove("error-border");
-            }
-        }
-    </script>
-    
-    
+
+    <footer class="footer">
+        &copy; 2023 Secure Oracle. All rights reserved.
+    </footer>
 </body>
 </html>
