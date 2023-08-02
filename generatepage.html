@@ -21,6 +21,14 @@
             top: 0;
             z-index: 999;
         }
+        .home-icon {
+            width: 40px;
+            height: 40px;
+            
+            margin-right: 10px;
+            cursor: pointer;
+           
+        }
 
         .logo {
             width: 80px;
@@ -107,52 +115,31 @@
             overflow-x: auto;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .input-group {
+            margin-bottom: 20px;
         }
 
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: center;
-        }
-
-        th.sl-number {
-            width: 50px;
-            background-color: #9a1445;
-            color: #fff;
-            font-size: 14px;
-        }
-
-        th {
-            background-color: #9a1445;
-            color: #fff;
+        .input-label {
             font-weight: bold;
-        }
-
-        td {
-            background-color: #fff;
+            margin-bottom: 5px;
             color: #555;
         }
 
-        a {
-            color: #9a1445;
-            text-decoration: none;
-            transition: color 0.2s;
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #555;
+            box-sizing: border-box;
         }
 
-        a:hover {
-            color: #7c0d36;
+        .form-input::placeholder {
+            color: #999;
         }
 
-        .action-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-
-        .action-button {
+        .generate-button {
             background-color: #9a1445;
             color: #fff;
             padding: 12px 24px;
@@ -164,8 +151,14 @@
             transition: background-color 0.3s ease;
         }
 
-        .action-button:hover {
+        .generate-button:hover {
             background-color: #7c0d36;
+        }
+
+        .generated-password {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
         }
 
         .footer {
@@ -186,6 +179,7 @@
             <div class="website-name">Secure Oracle</div>
         </div>
         <div class="user-info">
+            <img class="home-icon" src="home_icon.png" alt="Home Icon" id="home-icon">
             <div class="user-name">John Doe</div>
             <div class="user-icon"></div>
             <div class="user-name-dropdown">
@@ -196,30 +190,30 @@
     </div>
 
     <div class="container">
-        <table>
-            <thead>
-                <tr>
-                    <th class="sl-number">Sl</th>
-                    <th>Website Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td><a href="#">Website 1</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td><a href="#">Website 2</a></td>
-                </tr>
-                <!-- Add more table rows with data as needed -->
-            </tbody>
-        </table>
-
-        <div class="action-buttons">
-            <button class="action-button" onclick="goToGeneratePage()">Generate</button>
-            <button class="action-button" onclick="goToStorePage()">Store</button>
-        </div>
+        <form>
+            <div class="input-group">
+                <label class="input-label" for="password-length">Password Length</label>
+                <input class="form-input" type="number" id="password-length" name="password-length" placeholder="Enter password length" min="8" max="32" required>
+            </div>
+            <div class="input-group">
+                <label class="input-label">Include Uppercase Letters</label>
+                <input type="checkbox" id="include-uppercase">
+            </div>
+            <div class="input-group">
+                <label class="input-label">Include Lowercase Letters</label>
+                <input type="checkbox" id="include-lowercase">
+            </div>
+            <div class="input-group">
+                <label class="input-label">Include Numbers</label>
+                <input type="checkbox" id="include-numbers">
+            </div>
+            <div class="input-group">
+                <label class="input-label">Include Special Characters</label>
+                <input type="checkbox" id="include-special">
+            </div>
+            <button class="generate-button" type="button">Generate Password</button>
+            <div class="generated-password" id="generated-password"></div>
+        </form>
     </div>
 
     <footer class="footer">
@@ -229,6 +223,10 @@
     <script>
         const userIcon = document.querySelector('.user-icon');
         const userInfo = document.querySelector('.user-info');
+        const generateButton = document.querySelector('.generate-button');
+        const homeIcon = document.getElementById('home-icon');
+
+        
 
         userIcon.addEventListener('click', () => {
             userInfo.classList.toggle('clicked');
@@ -240,12 +238,60 @@
                 userInfo.classList.remove('clicked');
             }
         });
-        function goToStorePage() {
-        window.location.href = 'storepage.html';
+
+        generateButton.addEventListener('click', () => {
+            generatePassword();
+        });
+        homeIcon.addEventListener('click', () => {
+            window.location.href = 'homepage.html';
+        });
+
+        function generatePassword() {
+    const length = parseInt(document.getElementById('password-length').value);
+    const includeUppercase = document.getElementById('include-uppercase').checked;
+    const includeLowercase = document.getElementById('include-lowercase').checked;
+    const includeNumbers = document.getElementById('include-numbers').checked;
+    const includeSpecial = document.getElementById('include-special').checked;
+    let charset = '';
+    let password = '';
+
+    if (isNaN(length) || length <= 0) {
+        alert('Please enter a valid password length.');
+        return;
     }
-        function goToGeneratePage() {
-        window.location.href = 'generatepage.html';
+
+    if (includeUppercase) {
+        charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        password += charset[Math.floor(Math.random() * charset.length)];
     }
+    if (includeLowercase) {
+        charset += 'abcdefghijklmnopqrstuvwxyz';
+        password += charset[Math.floor(Math.random() * charset.length)];
+    }
+    if (includeNumbers) {
+        charset += '0123456789';
+        password += charset[Math.floor(Math.random() * charset.length)];
+    }
+    if (includeSpecial) {
+        charset += '!@#$%^&*()_-+=<>?';
+        password += charset[Math.floor(Math.random() * charset.length)];
+    }
+
+    if (charset === '') {
+        alert('Please select at least one character type.');
+        return;
+    }
+
+    for (let i = password.length; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * charset.length);
+        password += charset[randomIndex];
+    }
+
+    document.getElementById('generated-password').innerText = password;
+}
+
+
+
     </script>
 </body>
 </html>
