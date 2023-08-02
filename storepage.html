@@ -25,7 +25,7 @@
         .logo {
             width: 80px;
             height: 80px;
-            margin-right: 20px;
+            margin-right: 10px;
         }
 
         .website-info {
@@ -38,6 +38,15 @@
             font-weight: bold;
             margin-left: 10px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .home-icon {
+            width: 40px;
+            height: 40px;
+            
+            margin-right: 10px;
+            cursor: pointer;
+           
         }
 
         .user-info {
@@ -104,55 +113,33 @@
             border: 1px solid #ddd;
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            overflow-x: auto;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .input-group {
+            margin-bottom: 20px;
         }
 
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: center;
-        }
-
-        th.sl-number {
-            width: 50px;
-            background-color: #9a1445;
-            color: #fff;
-            font-size: 14px;
-        }
-
-        th {
-            background-color: #9a1445;
-            color: #fff;
+        .input-label {
             font-weight: bold;
-        }
-
-        td {
-            background-color: #fff;
+            margin-bottom: 5px;
             color: #555;
         }
 
-        a {
-            color: #9a1445;
-            text-decoration: none;
-            transition: color 0.2s;
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #555;
+            box-sizing: border-box; /* Fix the bulging issue */
         }
 
-        a:hover {
-            color: #7c0d36;
+        .form-input::placeholder {
+            color: #999;
         }
 
-        .action-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-
-        .action-button {
+        .submit-button {
             background-color: #9a1445;
             color: #fff;
             padding: 12px 24px;
@@ -164,7 +151,7 @@
             transition: background-color 0.3s ease;
         }
 
-        .action-button:hover {
+        .submit-button:hover {
             background-color: #7c0d36;
         }
 
@@ -186,6 +173,7 @@
             <div class="website-name">Secure Oracle</div>
         </div>
         <div class="user-info">
+            <img class="home-icon" src="home_icon.png" alt="Home Icon">
             <div class="user-name">John Doe</div>
             <div class="user-icon"></div>
             <div class="user-name-dropdown">
@@ -196,30 +184,25 @@
     </div>
 
     <div class="container">
-        <table>
-            <thead>
-                <tr>
-                    <th class="sl-number">Sl</th>
-                    <th>Website Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td><a href="#">Website 1</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td><a href="#">Website 2</a></td>
-                </tr>
-                <!-- Add more table rows with data as needed -->
-            </tbody>
-        </table>
-
-        <div class="action-buttons">
-            <button class="action-button">Generate</button>
-            <button class="action-button" onclick="goToStorePage()">Store</button>
-        </div>
+        <form>
+            <div class="input-group">
+                <label class="input-label" for="website-name">Website Name</label>
+                <input class="form-input" type="text" id="website-name" name="website-name" placeholder="Enter website name" required>
+            </div>
+            <div class="input-group">
+                <label class="input-label" for="password">Password</label>
+                <input class="form-input" type="password" id="password" name="password" placeholder="Enter password" required>
+            </div>
+            <div class="input-group">
+                <label class="input-label" for="your-question">Your Question</label>
+                <input class="form-input" type="text" id="your-question" name="your-question" placeholder="Enter your question" required>
+            </div>
+            <div class="input-group">
+                <label class="input-label" for="answer">Answer</label>
+                <input class="form-input" type="text" id="answer" name="answer" placeholder="Enter answer" required>
+            </div>
+            <button class="submit-button" type="submit">Submit</button>
+        </form>
     </div>
 
     <footer class="footer">
@@ -229,9 +212,14 @@
     <script>
         const userIcon = document.querySelector('.user-icon');
         const userInfo = document.querySelector('.user-info');
+        const homeIcon = document.querySelector('.home-icon');
 
         userIcon.addEventListener('click', () => {
             userInfo.classList.toggle('clicked');
+        });
+
+        homeIcon.addEventListener('click', () => {
+            window.location.href = 'homepage.html';
         });
 
         // Close the dropdown when clicking outside
@@ -240,9 +228,6 @@
                 userInfo.classList.remove('clicked');
             }
         });
-        function goToStorePage() {
-        window.location.href = 'storepage.html';
-    }
     </script>
 </body>
 </html>
