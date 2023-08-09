@@ -17,12 +17,22 @@
             text-align: center;
             display: flex;
             align-items: center;
+            justify-content: space-between;
         }
 
         .logo {
             width: 80px;
             height: 80px;
             margin-right: 20px;
+        }
+        .logo-text-container {
+            display: flex;
+            align-items: center;
+        }
+        .site-name {
+            font-size: 24px;
+            color: #ffffff;
+            font-weight: bold;
         }
 
         .site-overview {
@@ -137,13 +147,34 @@
         .slider-arrow.next {
             right: 20px;
         }
+        .login-button {
+            background-color: #fff;
+            color: #9a1445;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .login-button:hover {
+            background-color: #9a1445;
+            color: #fff;
+        }
 
     </style>
 </head>
 <body>
     <header class="header">
-        <img class="logo" src="logo_index.png" alt="Secure Oracle Logo">
-        <h1>S3cure Oracle</h1>
+        <div class="logo-text-container">
+            <img class="logo" src="logo_index.png" alt="Secure Oracle Logo">
+            <h1 class="site-name">S3cure Oracle</h1>
+        </div>
+        <button class="login-button">Login</button> 
+    </header>
+        
+        
     </header>
     <div class="image-slider">
         <div class="slider-images">
